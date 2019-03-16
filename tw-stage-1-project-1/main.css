@@ -1,0 +1,188 @@
+/* 全局设置*/
+* {
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+body {
+    background-color: black;
+    width: 95%;
+    margin: auto;
+}
+.menu, p {
+	color: white;
+}
+
+
+ /* top 区域 */
+ .top {
+    background: url('images/starfield-banner.jpg ');
+    position: fixed;
+	width: 95%;
+}
+.right-border {
+	border-right: 2px solid rgb(200,200,200,0.5);
+}
+.nasa-icon {
+	width: 15%;
+	display: inline-block;
+}
+.menu-bar {
+	width: 84%;
+	display: inline-block;
+}
+.main-menu {
+	margin-left: 5%;
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+.main-menu .menu {
+	display: inline-block;
+	font-size: 20px;
+	padding: 1%;
+	vertical-align: bottom;
+}
+.main-menu .search-area {
+	display: inline-block;
+	margin-left: 2%;
+}
+.main-menu form {
+	display: inline-block;
+	width: 64%;
+	background-color: rgba(200,200,200,0.3);
+}
+.main-menu input[class="search-bar"] {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	width: 47%;
+	padding: 7% 0 7% 5%;
+	vertical-align: bottom;
+}
+.main-menu input[class="search-icon"] {
+	background-color: rgba(0,0,0,0);
+	width: 30px;
+	height: 30px;
+	margin-left: 20%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	vertical-align: bottom;
+}
+.main-menu img[class="share-icon"] {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	vertical-align: bottom;
+}
+.sub-menu {
+	background-color: rgba(200,200,200,0.5);
+	margin-right: 20%;
+}
+.sub-menu .menu {
+	display: inline-block;
+	padding: 0.3% 1% 0.3% 1%;
+	font-size: 14px;
+	margin-top: 0.5%;
+	margin-bottom: 0.5%;
+}
+
+
+
+
+/* main 区域 */ 
+.main {
+	width: 95%;
+	padding-top: 8%;
+}
+.main table {
+	width: 100%;
+	border-spacing: 31px;
+}
+.main tr {
+	height: 300px;
+	vertical-align: bottom;
+}
+.main td {
+	width: 25%;
+	background-repeat: no-repeat;
+}
+.main .description {
+	color: black;
+	font-weight: bold;
+	padding: 1%;
+	background-color: rgba(255,255,255,0.7);
+}
+.main .keyword {
+	display: inline-block;
+	padding: 1%;
+	background-color: rgba(81, 127, 165, 0.911)
+}
+
+.main .more {
+	padding: 0.6%;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgb(30, 62, 167);
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.main .notice {
+	background-color: rgba(81, 127, 165, 0.911);
+}
+.main .notice p {
+	padding: 1%;
+	font-size: 13px;
+}
+.main hr {
+	width: 93%;
+	margin: 0 3% 0 3%;
+}
+
+.main .video {
+	height: 300px;
+	width: 100%;
+}
+.main .audio {
+	height: 0;
+	width: 0;
+}
+
+
+
+/* bottom 区域 */
+.bottom {
+	width: 95;
+}
+.bottom .logo {
+	vertical-align: top;
+	display: inline-block;
+	width: 5%;
+}
+.bottom .text {
+	vertical-align: top;
+	display: inline-block;
+	width: 20%;
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
+}
+.bottom .links {
+	vertical-align: top;
+	display: inline-block;
+	width: 65%;
+	margin-left: 4%;
+	/* padding-left: 2%; */
+}
+.bottom .links p {
+	vertical-align: top;
+	display: inline-block;
+	color: rgb(52, 79, 168);
+	margin: 8% 1.7% 7% 1.7%;
+	font-size: 12px;
+	font-weight: bold;
+}
+.bottom .links p:last-child {
+	margin-right: 0;
+}
