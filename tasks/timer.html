@@ -17,6 +17,7 @@
 
 <input type="button" value="开始" onclick="begin()">
 <input type="button" value="结束" onclick="end()">
+<input type="button" value="重置" onclick="resert()">
 
 <script>
     var hour=0, min=0, sec=0;
@@ -38,11 +39,14 @@
         count();
     }
     function end() {
+        clearTimeout(t);
+    }
+    function resert() {
+        end();
         hour = 0;
         min = 0;
         sec = 0;
         document.getElementById('result').value = hour+" 时 "+min+" 分 "+sec+" 秒";
-        clearTimeout(t);
     }
     document.getElementById('result').value = "点击开始进行计时";
 </script>
