@@ -1,0 +1,54 @@
+<!-- 实现一个基础的计时器应用，点击开始按钮开始计时，点击结束按钮结束计时，并把计时的结果显示在上面的输入框中。 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器示例</title>
+</head>
+<style>
+    #result {
+        height: 50px;
+        border: 0;
+    }
+</style>
+<body>
+
+<input type="text" id="result"> <br><br>
+
+<input type="button" value="开始" onclick="begin()">
+<input type="button" value="结束" onclick="end()">
+<input type="button" value="重置" onclick="resert()">
+
+<script>
+    var hour=0, min=0, sec=0;
+    var t;
+    function count() {
+        sec += 1;
+        if (sec===60) {
+            sec = 0;
+            min += 1;
+        }
+        if (min===60) {
+            min = 0;
+            hour += 1;
+        }
+        document.getElementById('result').value = hour+" 时 "+min+" 分 "+sec+" 秒";
+        t = setTimeout("begin()", 1000);
+    }
+    function begin() {
+        count();
+    }
+    function end() {
+        clearTimeout(t);
+    }
+    function resert() {
+        end();
+        hour = 0;
+        min = 0;
+        sec = 0;
+        document.getElementById('result').value = hour+" 时 "+min+" 分 "+sec+" 秒";
+    }
+    document.getElementById('result').value = "点击开始进行计时";
+</script>
+</body>
+</html>

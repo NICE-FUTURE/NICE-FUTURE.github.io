@@ -1,0 +1,37 @@
+<!-- 补充以下HTML，实现点击某一个数字可以alert出该数字。 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+</head>
+<body>
+
+<ul id="no">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+</ul>
+
+<script>
+    function showNumber() {
+        alert(event.target.innerHTML);
+    }
+    lis = document.getElementsByTagName('li');
+    for (let i=0; i<lis.length; i++) {
+        lis[i].onclick = showNumber;
+    }
+    //加入按键
+    function keyDown() {
+       var keycode = event.keyCode;
+       var char = String.fromCharCode(event.keyCode);
+       alert(char);
+    }
+    document.onkeydown = keyDown;
+</script>
+</body>
+</html>
