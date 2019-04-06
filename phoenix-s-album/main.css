@@ -1,0 +1,55 @@
+.cn {
+    font-size: 50px;
+    font-family: serif;
+}
+.en {
+    font-size: 20px;
+    font-family: monospace;
+}
+
+/*title*/
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(255,150,170);
+    color: white;
+}
+.header hr {
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 25em;
+}
+.header :first-child {
+    margin-bottom: 0%;
+}
+.header :last-child {
+    margin-top: 0%;
+}
+
+/*content*/
+.content {
+    display: flex;
+    width: 100%;
+    background-color: rgb(255,220,200);
+    justify-content: space-around;
+    text-align: center;
+}
+.content img {
+    width: 50%;
+    padding: 1%;
+}
+.description {
+    margin: 1%;
+}
+.content .cn {
+    font-size: 40px;
+}
+
+/*bottom*/
+.footer{
+    padding: 2%;
+}
+.footer a {
+    text-decoration-line: none;
+}

@@ -1,0 +1,45 @@
+.header {
+    display: flex;
+    padding-left: 2%;
+}
+.icon {
+    width: 10em;
+    height: 12em;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    padding: 6%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    font-size: 1.5em;
+    text-align: center;
+}
+.left, .right {
+    padding: 5%;
+    font-size: 1.1em;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 4%;
+}
+.copyright {
+    margin: 1%;
+    padding: 1%;
+}
+.github {
+    margin: 1%;
+    padding: 1%;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-weight: bold;
+}
+.github a {
+    text-decoration-line: none;
+}
