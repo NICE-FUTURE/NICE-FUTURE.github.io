@@ -1,0 +1,227 @@
+/* 全局设置*/
+* {
+	font-family: sans-serif;
+	color: white;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+}
+
+
+ /* top 区域 */
+ .header {
+	display: flex;
+	justify-content: space-around;
+    background: url('images/starfield-banner.jpg ');
+	position: fixed;  /*固定在页面顶部*/
+	top: 0;  /*置顶*/
+	width: 100%;
+}
+.nasa-icon {
+	flex: 0 0 10%;
+}
+.nasa-icon img {
+	width: 8vw;
+	height: 8vw;
+}
+.menu-bar {
+	flex: 0 0 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.main-menu {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.main-menu dd {
+	font-size: 1.5vw;
+	padding: 0 0.7vw 0 0.7vw;
+	margin-left: 0%;
+}
+form {
+	display: flex;
+	background-color: rgba(200,200,200,0.3);
+	margin-right: 19%;
+}
+input[class="search-bar"] {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	padding-left: 2%;
+	font-size: 1vw;
+	width: 6vw;
+}
+input[class="search-icon"], input[class="share-icon"] {
+	width: 2vw;
+	height: 2vw;
+}
+.sub-menu {
+	display: flex;
+	justify-content: space-around;
+	background-color: rgba(200,200,200,0.5);
+	margin-right: 20%;
+}
+.sub-menu dd {
+	font-size: 1vw;
+	padding: 0 0.4vw 0 0.4vw;
+	margin-left: 0%;
+}
+dl {
+	display: flex;
+}
+.main-menu dl :not(:last-child), .sub-menu dl :not(:last-child) {
+	border-right: 0.1vw solid white;
+}
+
+
+
+
+/* main 区域 */ 
+.main {
+	padding-top: 9%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+#n1, #n2, #n3 {
+	display: flex;
+	justify-content: space-around;
+}
+#n1 {
+	height: 100vh;
+}
+#n2, #n3 {
+	height: 50vh;
+}
+.n {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin: 0.5%;
+}
+
+#n1-1 {
+	background: url("images/pia21924-16.jpg") no-repeat;
+	flex: 1;
+}
+#n1-2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
+}
+
+#n1-2-1 {
+	display: flex;
+	justify-content: space-between;
+	flex: 1;
+}
+#n1-2-2{
+	background: url("images/s69-39961.jpg") no-repeat;
+	flex: 1;
+	height: 40vh;
+}
+
+#n1-2-1-1 {
+	background: url("images/mollweide_cycle.jpg") no-repeat;
+	flex: 1;
+}
+#n1-2-1-2 {
+	flex: 1;
+}
+
+
+#n2-1 {
+	background: url("images/ssc2017-14a1.jpg") no-repeat;
+	flex: 1;
+}
+#n2-2 {
+	background: url("images/pia22556-16.gif") no-repeat;
+	flex: 2;
+}
+#n2-3 {
+	flex: 1;
+}
+
+#n3-1{
+	background: url("images/nasa_logo.png") no-repeat;
+	flex: 1;
+}
+#n3-2 {
+	background: url("images/io-home.gif") no-repeat;
+	flex: 1;
+}
+#n3-3 {
+	background: url("images/cassini20170809.jpg") no-repeat;
+	flex: 1;
+}
+#n3-4 {
+	background: url("images/fermiicecube_as.jpg") no-repeat;
+	flex: 1;
+}
+
+
+.description {
+	color: black;
+	font-weight: bold;
+	background-color: rgba(255,255,255,0.7);
+	margin: 0%;
+	padding: 1%;
+}
+.keyword {
+	background-color: rgba(81, 127, 165, 0.911);
+	margin: 0%;
+	padding: 1%;
+}
+
+.more {
+	padding: 0.6%;
+	font-weight: bold;
+	text-align: center;
+	background-color: rgb(30, 62, 167);
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.notice {
+	background-color: rgba(81, 127, 165, 0.911);
+}
+.notice p {
+	padding: 1%;
+	font-size: 13px;
+}
+.audio {
+	height: 0;
+	width: 0;
+}
+
+
+
+/* bottom 区域 */
+.footer {
+	display: flex;
+	justify-content: space-around;
+}
+.footer .logo {
+	width: 5%;
+}
+.footer .text {
+	width: 20%;
+	font-size: 0.7vw;
+	font-weight: bold;
+	color: white;
+}
+/* .footer .links {
+	width: 65%;
+	margin-left: 4%;
+	padding-left: 2%;
+}*/
+
+.links dd {
+	color: rgb(52, 79, 168);
+	font-size: 0.7vw;
+	font-weight: bold;
+}
