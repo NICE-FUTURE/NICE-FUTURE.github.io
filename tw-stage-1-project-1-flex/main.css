@@ -108,9 +108,9 @@ dl {
 	flex: 1;
 }
 #n1-2 {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	/* display: flex; */
+	/* flex-direction: column;
+	justify-content: space-between; */
 	flex: 1;
 }
 
@@ -170,11 +170,13 @@ dl {
 	background-color: rgba(255,255,255,0.7);
 	margin: 0%;
 	padding: 1%;
+	font-size: 1vw;
 }
 .keyword {
 	background-color: rgba(81, 127, 165, 0.911);
 	margin: 0%;
 	padding: 1%;
+	font-size: 1vw;
 }
 
 .more {
@@ -184,6 +186,7 @@ dl {
 	background-color: rgb(30, 62, 167);
 	margin-top: 1%;
 	margin-bottom: 1%;
+	font-size: 1vw;
 }
 
 .notice {
@@ -191,7 +194,7 @@ dl {
 }
 .notice p {
 	padding: 1%;
-	font-size: 13px;
+	font-size: 1vw;
 }
 .audio {
 	height: 0;
