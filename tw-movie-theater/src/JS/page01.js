@@ -11,8 +11,8 @@ window.onload = function() {
 
 // 事件绑定
 function addSearchListener() {
-    var searchField = document.getElementById("search-bar").elements[0];   // 搜索框
-    var searchButton = document.getElementById("search-bar").elements[1];  // 搜索按钮
+    var searchField = document.getElementById("search-bar").getElementsByTagName('input')[0];   // 搜索框
+    var searchButton = document.getElementById("search-bar").getElementsByTagName('input')[1];  // 搜索按钮
     searchButton.addEventListener("click", function() {
         baseURL = `https://api.douban.com/v2/movie/search?q=${searchField.value}&`;
         requestJson(baseURL+`start=0&count=6&callback=responseJson`);
