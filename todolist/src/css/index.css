@@ -1,0 +1,69 @@
+#title {
+    font-size: 3em;
+    font-weight: bolder;
+    text-align: center;
+}
+#copyright {
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50;  /*Green*/
+    border: none;
+    color: white;
+    padding: 2% 3%;
+    text-align: center;
+    font-size: 13px;
+}
+#task-todo button {
+    background-color:  darkred;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    width: 40%;
+}
+.add {
+    display: flex;
+    justify-content: space-around;
+    margin: 2%;
+}
+.add input {
+    width: 75%;
+}
+#task-todo, #task-done, li {
+    margin: 2%;
+}
+#task-todo >div {
+    display: flex;
+    justify-content: space-between;
+}
+#task-done {
+    color: grey;
+    text-decoration-line: line-through;
+    font-style: italic;
+}
+
+
+.left-count {
+    /* border: 1px solid black; */
+    background-color: silver;
+    text-align: center;
+    margin: 2%;
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    margin: 2%;
+}
