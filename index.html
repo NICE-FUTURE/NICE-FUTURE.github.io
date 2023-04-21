@@ -323,8 +323,8 @@
                         $("#image-file-name").html(filename);
                         // 图像结果
                         let timestamp = new Date().getTime();
-                        $("#result-image").attr("href", api+"/"+result.url+"?t=" + timestamp);
-                        $("#result-image img").attr("src", api+"/"+result.url);
+                        $("#result-image").attr("href", api+"/"+result.url);
+                        $("#result-image img").attr("src", api+"/"+result.url+"?t=" + timestamp);
                         $("#loading-icon").hide();
                         $("#loading-btn-area").hide();
                         $(".result-area").each((idx,ele)=>{$(ele).show()});
