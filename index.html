@@ -242,7 +242,7 @@
                 validForm = false
             }
 
-            let dotIdx = $("#file").val().indexOf(".");
+            let dotIdx = $("#file").val().lastIndexOf(".");
             let suffix = "";
             if (dotIdx !== -1) {
                 suffix = $("#file").val().substr(dotIdx);
