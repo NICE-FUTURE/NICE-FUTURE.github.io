@@ -322,7 +322,8 @@
                         filename = filename[filename.length-1]
                         $("#image-file-name").html(filename);
                         // 图像结果
-                        $("#result-image").attr("href", api+"/"+result.url);
+                        let timestamp = new Date().getTime();
+                        $("#result-image").attr("href", api+"/"+result.url+"?t=" + timestamp);
                         $("#result-image img").attr("src", api+"/"+result.url);
                         $("#loading-icon").hide();
                         $("#loading-btn-area").hide();
