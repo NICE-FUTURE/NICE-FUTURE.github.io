@@ -1,50 +1,357 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>navigation-page</title>
-        <link rel="stylesheet" href="main.css">
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141690066-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-141690066-1');
-        </script>
-    </head>
-    <body>
-        <div class="header">
-            <img class="icon" src="./images/hxhen-icon.jpg" alt="icon.jpg">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BirdDL-Light 识别页面</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <script src="static/jquery/jquery.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/bs-custom-file-input.min.js"></script>
+    <style>
+
+        .badge {
+            cursor: pointer;
+        }
+        .custom-file-label, .custom-file-label::after {
+            padding-top: 5vw;
+            padding-bottom: 5vw;
+            display: flex;
+            align-items: center;
+        }
+        .custom-file{
+            margin-bottom: 10vw;
+        }
+        .custom-file-input {
+            padding-bottom: 10vw;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-size: 1.1em;
+        }
+
+        /* fixed navigation style */
+        #navigation {
+            width: 100%;
+            position: fixed;
+            top: 0px;
+            height: 100px;
+            z-index: 999;
+            background: hsla(0,0%,100%,.61);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 15px rgb(0 0 0 / 5%);
+        }
+        #body {
+            margin-top: 150px;
+        }
+        #footer {
+            font-size: small;
+            color: #626469;
+        }
+
+        /* links common style */
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        a.active {
+            color: #007bff;
+        }
+        a:hover {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* titles style */
+        #big-title {
+            width: 30%;
+            margin: auto 0;
+            padding-left: 5%;
+        }
+        #big-title-en {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        #big-title, #big-title:hover {
+            color: #110f0f;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="navigation" class="p-2 d-flex justify-content-start">
+        <a href="/" id="big-title" class="d-block"><span id="big-title-en">BirdDL-Light</span></a>
+    </div>
+    <div id="body">
+
+        <div class="container">
+        
+            <div class="right-images-area border-top border-primary bg-white rounded mt-3 mb-3 pb-3">
+                <span class="p-2 ml-3 mb-1 font-weight-bold h5 text-dark border-bottom border-primary"
+                    style="display: inline-block; border-width: 3px !important;">上传图片</span>
+                <hr style="padding: 0.3vh; background-color: #f0f0f0; border-top: 0;" />
+                <div class="text-muted ml-4">
+                    <p class="">
+                        说明：</br>
+                        此页面为完全独立的前端网页。请填写 BirdDL-Light 平台的 API 地址，并在该平台获取密钥后使用。</br>
+                    </p>
+                    <p id="err-msg" class="text-danger"></p>
+                </div>
+
+                <!-- 上传图片 -->
+                <form enctype="multipart/form-data" onsubmit="return false" action="#" method="post" class="mt-2 mb-2 ml-4 mr-4" id="upload_image">
+                    <label for="api" class="sr-only">API</label>
+                    <input type="text" id="api" class="form-control mt-3" placeholder="API地址" name="api" required>
+
+                    <label for="key" class="sr-only">密钥</label>
+                    <input type="password" id="upload_image_key" class="form-control mt-3" placeholder="BirdDL-Light平台密钥" name="key" required>
+        
+                    <div class="custom-file mt-3" style="width: 90%;">
+                        <input type="file" class="custom-file-input" name="file" id="file"
+                            accept="image/jpeg,image/png">
+                        <label class="custom-file-label text-muted" for="file"
+                            style="overflow: hidden;">点击此处选择文件（或拖拽文件至此处）</label>
+                    </div>
+                    <p class="text-muted" style="font-size: small;">* 先在此处上传图片，再用下方的识别功能处理该图片。</p>
+
+                    <div class="mb-2">
+                        <div id="upload_image_submit" class="btn btn-primary">上传图片</div>
+                    </div>
+                </form>
+            </div>
+
+                <!-- 开始识别 -->
+            <div class="right-images-area border-top border-primary bg-white rounded mt-3 mb-3 pb-3">
+                <span class="p-2 ml-3 mb-1 font-weight-bold h5 text-dark border-bottom border-primary" style="display: inline-block; border-width: 3px !important;">开始识别</span>
+                <hr style="padding: 0.3vh; background-color: #f0f0f0; border-top: 0;" />
+                <p id="err-msg1" class="text-danger ml-4"></p>
+                <form enctype="multipart/form-data" onsubmit="return false" action="#" method="post" class="mt-2 mb-2 ml-4 mr-4" id="start_dl">
+
+                    <input type="password" id="start_dl_key" class="form-control mt-3" name="key" style="display: none;" required>
+                    <input type="text" id="uploaded_url" class="form-control mt-3" name="url" style="display: none;" required>
+
+                    <label for="prompt" class="sr-only">提示词</label>
+                    <input type="text" id="prompt" class="form-control mt-3" placeholder="输入提示词" name="prompt" required>
+                    <p class="text-muted" style="font-size: small;">
+                        * 任意字符串, 可以是单个类别标签 (如: "bird", "penguin"等), 同时识别多个类别推荐用 "." 隔开 (如: "bird . penguin"), 可以是更具体的描述 (如: "left bird", "cat ear"), 更多 prompt 待发掘
+                    </p>
+
+                    <label for="tbox" class="sr-only">边界框阈值</label>
+                    <input type="number" id="tbox" class="form-control mt-3" placeholder="边界框阈值" name="tbox" value="0.3" required>
+        
+                    <label for="ttext" class="sr-only">文本阈值</label>
+                    <input type="number" id="ttext" class="form-control mt-3" placeholder="边界框阈值" name="ttext" value="0.25" required>
+        
+                    <div class="mt-3 mb-2">
+                        <div id="start_dl_submit" class="btn btn-primary">开始识别</div>
+                    </div>
+                </form>
+            </div>
+    
+            <!-- 结果展示区域 -->
+            <div class="right-images-area border-top border-primary bg-white rounded mt-3 mb-3 pb-3">
+                <span class="p-2 ml-3 mb-1 font-weight-bold h5 text-dark border-bottom border-primary"
+                    style="display: inline-block; border-width: 3px !important;">识别结果
+                </span>
+                <hr style="padding: 0.3vh; background-color: #f0f0f0; border-top: 0;" />
+    
+                <div style="min-height: 60vh;">
+    
+                    <div class="result-area pl-5 pr-5 w-100">
+                        <!-- 图片 -->
+                        <div id="bird-image" class="mt-1">
+                            <div class="font-weight-bold h5">识别结果：</div>
+                            <div class="d-flex mb-2 ml-5">
+                                <div class="">"<span id="image-file-name"></span>"</div>
+                            </div>
+                            <a id="result-image" href="" target="_blank" style="width: 90%;">
+                                <img src="" alt="结果" style="width: 100%;">
+                            </a>
+                        </div>
+                    </div>
+
+                    <p id="before-msg" class="text-muted text-center">还没有结果, 上传一张图片试试~</p>
+
+                    <div id="waiting-area" class="w-100 d-flex justify-content-center align-items-center">
+                        <div id="loading-area">
+                            <img id="loading-icon" src="static/iconfont/loading.gif" alt="">
+                            <div id="loading-btn-area" style="text-align: center;">
+                                <p class="text-warning">加载失败 :( 请稍后重试</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    
+        </div>
+        
+        <!-- 接收服务器消息 -->
+        <div class="modal fade" id="server-message" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+                <div class="modal-content p-3">
+                    <div class="h5 modal-title d-flex align-items-center">
+                        <img class="icon pr-2" src="static/iconfont/tips.svg" alt="" style="width: 3vw;">
+                        <div id="modal-msg"></div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="main">
-            <div class="left">
-                <b>原创区</b>
-                <ul>
-                    <li><a href="./phoenix-s-album/index.html">吾妹的作品展示</a></li>
-                </ul>
-            </div>
-            <div class="middle title">
-                <p class="first">欢迎降落到导航坐标</p>
-                <p class="second">您将由此中转</p>
-                <p class="third">去往其他星球</p>
-            </div>
-            <div class="right">
-                <b>ThoughtWorks课程练习区</b>
-                <ul>
-                    <li><a href="./tw-stage-1-project-1/index.html">模拟NASA主页布局</a></li>
-                    <li><a href="./tw-stage-1-project-1-flex/index.html">模拟NASA主页布局的flex布局版本</a></li>
-                    <li><a href="./tasks/number_alert.html">鼠标点击数字反馈与键盘字符反馈</a></li>
-                    <li><a href="./tw-stage-1-project-3-master/whack-a-mole/index.html">打地鼠游戏</a></li>
-                    <li><a href="./tw-movie-theater/src/HTML/page01.html">斯沃影院练习</a></li>
-                    <li><a href="./todolist/src/html/index.html">TodoList练习</a></li>
-                </ul>
-            </div>
-        </div>
+    </div>
+    <div id="footer" class="bg-white mt-3 p-2 text-center">Copyright © 2023 BirdDL-Light All Rights Reserved.</div>
 
-        <div class="footer">
-            <div class="copyright">Copyright © 2019-2019 nice-future(hxhen.com), All Rights Reserved.</div>
-            <div class="github"><a href="https://NICE-FUTURE.github.io/index.html">Fork</a></div>
-        </div>
-    </body>
+    <script>
+
+        $(document).ready(()=>{
+            bsCustomFileInput.init();  // 初始化图片上传部件
+            // 初始状态
+            $("#loading-icon").hide();
+            $("#loading-btn-area").hide();
+            $(".result-area").each((idx,ele)=>{$(ele).hide()});
+            $("#upload_image_submit").click(upload_image_fn);
+            $("#start_dl_submit").click(start_dl_fn);
+
+            if (localStorage.getItem("api") != null) {
+                $("#api").val(localStorage.getItem("api"))
+            }
+            if (localStorage.getItem("key") != null) {
+                $("#upload_image_key").val(localStorage.getItem("key"))
+            }
+        });
+    
+        function upload_image_fn() {
+            let api = $("#api").val()
+            if (api.charAt(api.length-1) === "/") {
+                api = api.slice(0, api.length-1)
+            }
+            localStorage.setItem("api", api);
+            localStorage.setItem("key", $("#upload_image_key").val());
+
+            // 检查表单
+            $("#err-msg").html()
+            validForm = true
+            if ($("#api").val() === "") {
+                $("#err-msg").html(`错误! 请填写 API 地址!`);
+                validForm = false
+            }
+            if ($("#upload_image_key").val() === "") {
+                $("#err-msg").html(`错误! 请填写在平台申请的密钥!`);
+                validForm = false
+            }
+
+            let dotIdx = $("#file").val().indexOf(".");
+            let suffix = "";
+            if (dotIdx !== -1) {
+                suffix = $("#file").val().substr(dotIdx);
+            }
+            if (!([".jpg", ".jpeg", ".png"].indexOf(suffix.toLowerCase()) != -1)) {
+                validForm = false
+                $("#err-msg").html(`错误! 未选择图片或图片后缀 "${suffix}" 无效!`);
+            }
+
+            // 提交表单
+            if (validForm) {
+                let form = new FormData(document.getElementById("upload_image"));
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",  //预期服务器返回的数据类型
+                    url: api+"/groundingdino/upload/",
+                    data: form,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    // data: $("#upload_image").serialize(), 
+                    success: function(result) {
+                        // console.log(result);
+                        $("#uploaded_url").val(result.file)
+                        $("#modal-msg").html("提交成功")
+                        show_modal()
+                    },
+                    error : function(res) {
+                        console.log(res)
+                        console.log(res.responseJSON)
+                        $("#err-msg").html("提交失败:"+JSON.stringify(res.responseJSON))
+                    }
+                });
+            }
+        }
+
+        function start_dl_fn() {
+            let api = $("#api").val()
+            if (api.charAt(api.length-1) === "/") {
+                api = api.slice(0, api.length-1)
+            }
+            $("#start_dl_key").val($("#upload_image_key").val())
+
+            // 检查表单
+            $("#err-msg1").html()
+            validForm = true
+            if ($("#start_dl_key").val() === "") {
+                $("#err-msg1").html(`错误! 请填写在平台申请的密钥!`);
+                validForm = false
+            }
+            if ($("#uploaded_url").val() === "") {
+                $("#err-msg1").html(`错误! 请先上传图片再开始识别!`);
+                validForm = false
+            }
+            if ($("#prompt").val() === "") {
+                $("#err-msg1").html(`错误! 请填写提示词!`);
+                validForm = false
+            }
+
+            // 提交表单
+            if (validForm) {
+                let form = new FormData(document.getElementById("start_dl"));
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",  //预期服务器返回的数据类型
+                    url: api+"/groundingdino/inference/",
+                    data: form,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        console.log(result);
+                        $("#modal-msg").html("识别成功")
+                        show_modal()
+                        // 文件名
+                        let filename = $("#uploaded_url").val().split("/")
+                        filename = filename[filename.length-1]
+                        $("#image-file-name").html(filename);
+                        // 图像结果
+                        $("#result-image").attr("href", api+"/"+result.url);
+                        $("#result-image img").attr("src", api+"/"+result.url);
+                        $("#loading-icon").hide();
+                        $("#loading-btn-area").hide();
+                        $(".result-area").each((idx,ele)=>{$(ele).show()});
+                    },
+                    error : function(res) {
+                        console.log(res.responseJSON)
+                        $("#err-msg1").html("识别失败:"+JSON.stringify(res.responseJSON))
+                        $("#loading-icon").hide();
+                        $("#loading-btn-area").show();
+                    }
+                });
+
+                // 等待状态
+                $("#loading-icon").show();
+                $("#loading-btn-area").hide();
+                $("#before-msg").hide();
+                $(".result-area").each((idx,ele)=>{$(ele).hide()});
+            }
+        }
+
+        function show_modal(success) {
+            $('#server-message').modal("show")
+            setTimeout(function(){
+                $("#server-message").modal("hide")
+            },1000);
+        }
+
+    </script>
+    
+</body>
 </html>
