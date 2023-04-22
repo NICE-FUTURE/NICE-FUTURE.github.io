@@ -231,7 +231,7 @@
             localStorage.setItem("key", $("#upload_image_key").val());
 
             // 检查表单
-            $("#err-msg").html()
+            $("#err-msg").html("")
             validForm = true
             if ($("#api").val() === "") {
                 $("#err-msg").html(`错误! 请填写 API 地址!`);
@@ -291,7 +291,7 @@
             $("#start_dl_key").val($("#upload_image_key").val())
 
             // 检查表单
-            $("#err-msg1").html()
+            $("#err-msg1").html("")
             validForm = true
             if ($("#start_dl_key").val() === "") {
                 $("#err-msg1").html(`错误! 请填写在平台申请的密钥!`);
