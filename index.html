@@ -273,7 +273,11 @@
                     error : function(res) {
                         console.log(res)
                         console.log(res.responseJSON)
-                        $("#err-msg").html("提交失败:"+JSON.stringify(res.responseJSON))
+                        if (res.responseJSON === undefined) {
+                            $("#err-msg").html("提交失败: 请检查 API 地址是否正确。(也可能该API已暂停服务)")
+                        } else {
+                            $("#err-msg").html("提交失败:"+JSON.stringify(res.responseJSON))
+                        }
                     }
                 });
             }
